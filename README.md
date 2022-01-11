@@ -1,7 +1,7 @@
 # Agent in a Box
 
 ## Litterature
-Journal Paper: https://www.mdpi.com/1255326
+Gavigan, P.; Esfandiari, B. Agent in a Box: A Framework for Autonomous Mobile Robots with Beliefs, Desires, and Intentions. Electronics 2021, 10, 2136. https://doi.org/10.3390/electronics10172136
 
 ## Example Uses
 Grid Agent: https://github.com/NMAI-lab/jasonMobileAgent
