@@ -44,11 +44,24 @@ The main plans that the agnet uses are detailed below. This also explains what i
   - Successor state predicates: Used by the navigation search, these predicates define the state the robot will be in if it transitions from one location to another. This rule should yield a predicate of this form: `suc(CurrentState,NewState,Cost,Operation)`
   - Heuristic: Used by the navigation search to estimate the range (or other cost metric) to the destination for any position on the map. This rule should yield a predicate of this form: `h(Current,Goal,H)`.
 - Movement
-- Obstacle
-
-- Map Update
-- Resource Management
+  - Top level goal/trigger: `!waypoint(Destination)`.
+  - Plans that are responsible for moving the robot between waypoints. These domain specific plans are required for the agent to move. They need to be provided by the developer.
 - Collision Avoidance
+  - Top level goal/trigger: Can be any belief or perception.
+  - Prioritization belief: `safety(TriggerName)`. The prioritization belief is used by the reasoner to prioritize these types of belief triggered plan over all other plans.
+- Map Update
+  - This framework provided plan handles updating the map in the event that it finds a blocked path on the map that does not align with its map beliefs.
+  - Top level goal/trigger: `obstacle(Next)` - This belief needs to be percieved by the agent.
+  - These plans use the agent's position and map beliefs to determine if there is an inconsistency in the map. If there is it will suspend the mission, correct the map, and then resume the mission using the `!mission(_,_)` goal.
+- Resource Management
+  - Plans provided by the framework for managing the robot's battery or fuel.
+  - Top level goal/trigger: `resource(State)` - This belief needs to be percieved by the agent.
+  - To work this needs several other perceptions, beliefs, and rules. These include the following:
+    - docked(true/false) - True if the robot is docked with the charging station.
+    - lowResorce(State) - A predicate that specifies that the resource needs to be replenished. Can be implemented as a rule.
+    - fullResource(State) - A predicate taht speficies that the reseouce is full and that the robot can disconnect from the station. Can be implemented as a rule.
+    - stationLocation(Station) - A belief that spefies the location of the charging station. Part of the map.
+    - station(dock/undock) - An action that the agent will take to dock and undock from the charging station. This action needs to be implemented.
 
 ![Framework](https://github.com/NMAI-lab/agent_in_a_box_agent/blob/master/figures/AIB_Framework.png)
 
