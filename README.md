@@ -16,8 +16,7 @@ AirSim Car: https://github.com/NMAI-lab/AirSimNavigatingCar
 Mail Delivery using a Roomba: https://github.com/NMAI-lab/saviRoomba
 
 ## How to Use
-
-
+There are two main components to the software in this repository. First is the berahviour framework itself, which provides generic code for controlling the robot. These plans require certain other plans to be provided to it for some of the lower level control of the robot. For example, the framework provides a 'navigate' plan for generating a route to a destination and then moving the robot to the destination. This plan needs to be provided a set of plans for achieving the 'waypoint' goal, which moves the robot between individual locations. The second component is the prioritization of the agent's behaviour. This was accomplished through modification of Jason's event and option selection functions to prioritize certain behaviours over others. Both of these components are further documented in the following sections.
 
 ### Behaviour Framework
 ![Framework](https://github.com/NMAI-lab/agent_in_a_box_agent/blob/master/figures/AIB_Framework.png)
