@@ -66,5 +66,9 @@ The main plans that the agnet uses are detailed below. This also explains what i
 ![Framework](https://github.com/NMAI-lab/agent_in_a_box_agent/blob/master/figures/AIB_Framework.png)
 
 ### Prioritization of Behaviour
+Jason's default method for selecting which event to action and which option to select simply chooses the first applicable plan for the first event it the queue. This means that the developer would need to provide their plans in an order based on their relative priority. The Agent in a Box provides a modified event and option selection function, implemented in `brain.java`. The event selection function selects the highest priority event based on a set of prioritization beliefs. These beliefs are needed for every triggering event used by the plans. For example, a collision avoidance plan triggered by the `pedestrian` belief should be accompanied by the `safety(pedestrian)` belief so that the reasoner can prioritize this event at the highest level. The relative priorities for the different types of events are shown in the figure below.
+
+The second modification was to the option selection function. In this case, the agent will only select a default plan if no other plan is applicable. Othewise, this selects the first applicable plan. In practice we have found that generally there were only ever two plans applicable to any given event: the default and one other, meaning that this was sufficient for our needs.
+
 ![Prioritization](https://github.com/NMAI-lab/agent_in_a_box_agent/blob/master/figures/AgentInABoxBehaviourPrioritization.png)
 
