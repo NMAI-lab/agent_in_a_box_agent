@@ -6,6 +6,8 @@ This documnent provides a brief explanation of the Agent in a Box as well as how
 ## Litterature
 Gavigan, P.; Esfandiari, B. Agent in a Box: A Framework for Autonomous Mobile Robots with Beliefs, Desires, and Intentions. Electronics 2021, 10, 2136. https://doi.org/10.3390/electronics10172136
 
+Thesis: https://curve.carleton.ca/347c0528-113d-4176-b012-e5def3e06fb9
+
 ## Example Uses
 The following are examples of this framework in use. These working examples show what domain specidic work is needed to run use this framework.
 
